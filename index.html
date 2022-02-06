@@ -7,10 +7,28 @@
     </head>
     <body>
         <div id="app">
+            <h1 v-text="deckName"></h1>
 
+            <div class="card">
+                <h2 v-text="flipped ? '' : cards[0].front"></h2>
+                <div v-html="flipped ? cards[0].back : ''"></div>
+            </div>
         </div>
 
         <script src="data.js"></script>
         <script src="https://unpkg.com/vue@3.2.29/dist/vue.global.js"></script>
+        <script>
+            const FlashCardApp = {
+                data() {
+                    return {
+                        deckName: 'Vue.js Fundamentals',
+                        cards,
+                        flipped: false
+                    };
+                }
+            };
+
+            const app = Vue.createApp(FlashCardApp).mount('#app');
+        </script>
     </body>
 </html>
